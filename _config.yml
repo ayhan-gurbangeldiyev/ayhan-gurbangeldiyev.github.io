@@ -1,0 +1,17 @@
+title: "Ayhan Gurbangeldiyev — Technical Notes"
+author: Ayhan Gurbangeldiyev
+description: "Technical notes on AI agents, machine learning, and software engineering."
+url: "https://ayhan-gurbangeldiyev.github.io"
+baseurl: ""
+theme: minima
+lang: en
+timezone: Europe/Istanbul
+permalink: /writing/:title/
+show_excerpts: true
+github_username: ayhan-gurbangeldiyev
+header_pages: []
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+exclude:
+  - README.md
