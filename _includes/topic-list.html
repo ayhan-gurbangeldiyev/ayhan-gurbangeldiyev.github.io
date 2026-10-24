@@ -1,0 +1,9 @@
+<div class="topic-grid">
+{% for topic in site.data.topics %}
+  {% assign topic_id = topic[0] %}{% assign topic_data = topic[1] %}
+  {% assign topic_posts = site.posts | where_exp: 'post', 'post.topics contains topic_id' %}
+  {% if topic_posts.size > 0 %}
+    <a class="topic-card" href="{{ '/topics/' | relative_url }}#{{ topic_id }}"><span class="topic-card-top"><span>{{ topic_data.name | escape }}</span><span aria-hidden="true">↗</span></span><p>{{ topic_data.description | escape }}</p><span class="eyebrow">{{ topic_posts.size }} {% if topic_posts.size == 1 %}note{% else %}notes{% endif %}</span></a>
+  {% endif %}
+{% endfor %}
+</div>

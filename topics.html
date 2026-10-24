@@ -1,0 +1,10 @@
+---
+layout: default
+title: Topics
+permalink: /topics/
+description: "Follow the questions behind reliable AI systems. Only topics with published writing appear here."
+---
+<div class="shell page-shell"><header class="page-heading"><p class="eyebrow">A few threads to follow</p><h1>Topics<span class="accent">.</span></h1><p class="page-description">Different questions. A shared concern for what actually works.</p></header>
+{% for topic in site.data.topics %}{% assign topic_id = topic[0] %}{% assign topic_data = topic[1] %}{% assign topic_posts = site.posts | where_exp: 'post', 'post.topics contains topic_id' %}{% if topic_posts.size > 0 %}
+<section class="section topic-section" aria-labelledby="{{ topic_id }}"><div class="section-heading"><h2 id="{{ topic_id }}">{{ topic_data.name | escape }}</h2><span class="eyebrow">{{ topic_posts.size }} {% if topic_posts.size == 1 %}note{% else %}notes{% endif %}</span></div><p class="muted">{{ topic_data.description | escape }}</p>{% for post in topic_posts %}{% include article-card.html post=post %}{% endfor %}</section>
+{% endif %}{% endfor %}</div>

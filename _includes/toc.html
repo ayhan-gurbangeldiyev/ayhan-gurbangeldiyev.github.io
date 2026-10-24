@@ -1,0 +1,4 @@
+{% assign sections = include.html | split: '<h2 id="' %}
+{% if page.toc and sections.size > 1 %}
+<nav class="toc" aria-label="On this page"><h2 class="eyebrow">On this page</h2><ol>{% for section in sections offset: 1 %}{% assign heading_id = section | split: '"' | first %}{% assign heading_text = section | split: '</h2>' | first | prepend: '<h2 id="' | strip_html %}<li><a href="#{{ heading_id | escape }}">{{ heading_text | escape }}</a></li>{% endfor %}</ol></nav>
+{% endif %}

@@ -5,6 +5,17 @@ date: 2026-09-05 13:50:00 +0300
 author: Ayhan Gurbangeldiyev
 categories: [ai-engineering, agents]
 excerpt: "What recent research says about coordination, task dependencies, and the evidence needed before adding another agent."
+description: "What recent research says about coordination, task dependencies, and the evidence needed before adding another agent."
+permalink: /writing/before-adding-a-second-agent/
+featured: true
+article_type: Research note
+topics: [agentic-systems, ai-evaluation]
+cover: /assets/images/agent-coordination-cover.svg
+image:
+  path: /assets/images/agent-coordination-social.png
+  width: 1200
+  height: 630
+  alt: "Before Adding a Second Agent: single-agent and coordinated multi-agent paths."
 ---
 
 Adding a second agent creates an architectural question: can the task benefit from independent work, and will the improvement justify the coordination required? Recent research offers useful evidence, provided its results stay attached to the conditions under which they were measured.
@@ -25,6 +36,8 @@ Consider two illustrative tasks. Comparing several vendors could allow separate 
 
 The first example offers opportunities for independent investigation. In the second, later steps depend on earlier results and a consistent account state. Splitting responsibility introduces handoffs that need an explicit reason to exist. These examples suggest questions to test; they are not measured results.
 
+{% include figure.html src="/assets/images/single-vs-multi.svg" width=960 height=600 alt="Single-agent flow: task to agent and tools to verified outcome. Multi-agent flow: task to coordinator, independent agent A and agent B, synthesis, and verified outcome. Shared context, handoffs, and conflict resolution add coordination work." caption="Figure 1. Two illustrative architectures. Parallel work is useful only when the task allows it; delegation also adds shared context, handoffs, and synthesis. This is a conceptual comparison, not a measured performance result." %}
+
 Before choosing an architecture, I would ask:
 
 - Can useful subtasks run independently?
@@ -39,6 +52,14 @@ A practical starting point is a single-agent baseline on representative tasks. C
 Evaluation should inspect the resulting state: a claimed account update must correspond to the intended change. Anthropic’s evaluation guidance distinguishes this outcome from the conversation transcript. [Agent evaluation guidance](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents).
 
 The decision is whether coordination improves the outcome enough for the application’s constraints. The evidence supports testing that proposition for a specific task before treating agent count as a measure of system capability.
+
+{% include figure.html src="/assets/images/evaluation-decision.svg" width=960 height=680 alt="Decision process: define representative tasks and a single-agent baseline. If subtasks cannot run independently, retain the baseline. Otherwise compare architectures with fixed models, tools, inputs, and budgets; repeat trials and inspect outcomes, failures, latency, and actual cost. Adopt coordination only if its benefit justifies the overhead under the application's constraints." caption="Figure 2. An evaluation decision process derived from the questions in this note. Success means a verified outcome within the application’s constraints. No numerical thresholds or new experimental results are implied." %}
+
+## References
+
+- [Google Research: Towards a science of scaling agent systems](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/) — task-specific comparisons across agent configurations.
+- [Anthropic: How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) — an internal research evaluation and its resource trade-offs.
+- [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) — distinguishing transcripts from outcomes.
 
 ---
 

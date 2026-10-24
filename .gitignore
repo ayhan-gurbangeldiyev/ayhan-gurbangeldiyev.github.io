@@ -1,0 +1,10 @@
+_site/
+_site-preview/
+__pycache__/
+*.pyc
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+.DS_Store

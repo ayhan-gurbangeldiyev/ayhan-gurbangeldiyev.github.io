@@ -1,17 +1,63 @@
-title: "Ayhan Gurbangeldiyev — Technical Notes"
+title: "Ayhan Gurbangeldiyev — Engineering Notes"
+short_title: Engineering Notes
 author: Ayhan Gurbangeldiyev
-description: "Technical notes on AI agents, machine learning, and software engineering."
+description: "Field notes on building reliable AI systems. Architecture, evaluation, tooling, and the decisions behind AI software that works beyond the demo."
 url: "https://ayhan-gurbangeldiyev.github.io"
 baseurl: ""
-theme: minima
 lang: en
+locale: en_US
 timezone: Europe/Istanbul
 permalink: /writing/:title/
 show_excerpts: true
 github_username: ayhan-gurbangeldiyev
-header_pages: []
+email: info@ayhangurbangeldiyev.com
+portfolio_url: "https://ayhangurbangeldiyev.com/"
+linkedin_url: "https://www.linkedin.com/in/ayhan-gurbangeldiyev/"
+github_url: "https://github.com/ayhan-gurbangeldiyev"
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  auto_ids: true
+  toc_levels: "2..3"
+feed:
+  posts_limit: 50
+social:
+  name: Ayhan Gurbangeldiyev
+  links:
+    - "https://github.com/ayhan-gurbangeldiyev"
+    - "https://www.linkedin.com/in/ayhan-gurbangeldiyev/"
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+      image:
+        path: /assets/images/engineering-notes-social.png
+        width: 1200
+        height: 630
+        alt: "Engineering Notes by Ayhan Gurbangeldiyev. Field notes on building reliable AI systems."
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+      article_type: Engineering note
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 exclude:
   - README.md
+  - Gemfile
+  - Gemfile.lock
+  - docs
+  - templates
+  - scripts
+  - vendor
+  - LICENSE-visuals.md
+  - package.json
+  - package-lock.json
+  - _site-preview

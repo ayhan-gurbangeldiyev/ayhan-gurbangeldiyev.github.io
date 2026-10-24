@@ -1,0 +1,6 @@
+<ul class="topic-badges" aria-label="Topics">
+{%- for topic in include.post.topics -%}
+  {%- assign topic_data = site.data.topics[topic] -%}
+  <li><a href="{{ '/topics/' | relative_url }}#{{ topic | slugify }}">{{ topic_data.name | default: topic | escape }}</a></li>
+{%- endfor -%}
+</ul>
