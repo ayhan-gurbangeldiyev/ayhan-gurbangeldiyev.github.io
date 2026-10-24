@@ -10,6 +10,9 @@ timezone: Europe/Istanbul
 permalink: /writing/:title/
 show_excerpts: true
 github_username: ayhan-gurbangeldiyev
+# Public ownership verification; keep this after Search Console verification.
+webmaster_verifications:
+  google: "ahbu6Ux7900jx-Ayaon7W6O-ctO_9jtxTkTRtrNoFS4"
 email: info@ayhangurbangeldiyev.com
 portfolio_url: "https://ayhangurbangeldiyev.com/"
 linkedin_url: "https://www.linkedin.com/in/ayhan-gurbangeldiyev/"
