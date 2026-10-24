@@ -9,11 +9,12 @@
     {% seo %}
     {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
     {% feed_meta %}
+    {% assign asset_version = site.time | date: '%s' %}
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png" sizes="96x96">
     <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" sizes="180x180">
-    <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ asset_version }}"></script>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ asset_version }}">
+    <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ asset_version }}" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

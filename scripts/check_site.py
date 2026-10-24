@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Check Jekyll's generated artifacts with Python's standard library only."""
 import argparse
-from collections import Counter
 from datetime import datetime
 from html.parser import HTMLParser
 import json
@@ -113,7 +112,7 @@ def main():
     reference_count = 0
     for file, doc in documents.items():
         for tag, attrs in doc.nodes:
-            value = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag in ('img', 'script') else None
+            value = attrs.get('href') if tag in ('a', 'link') else attrs.get('src') if tag in ('img', 'script') else attrs.get('srcset') if tag == 'source' else None
             if not value:
                 continue
             url = urljoin(routes[file], value)
@@ -149,13 +148,37 @@ def main():
     check('Engineering Notes' in feed.findtext('a:title', '', ns), 'Feed title incorrect')
     entries = feed.findall('a:entry', ns)
     check(bool(entries), 'Feed has no entries')
+    entry_ids = [entry.findtext('a:id', '', ns) for entry in entries]
+    check(len(entry_ids) == len(set(entry_ids)), 'Duplicate feed entry IDs')
+    check(feed.findtext('a:id', '', ns) == origin + base + '/feed.xml', 'Stable feed ID changed')
+    check(feed.findtext('a:icon', '', ns) == origin + base + '/assets/images/favicon.png', 'Feed icon missing')
+    published_dates = []
     for entry in entries:
         for field in ('title', 'id', 'updated', 'published', 'content'):
             check(bool(entry.findtext('a:' + field, '', ns)), f'Feed entry missing {field}')
         for field in ('updated', 'published'):
-            datetime.fromisoformat(entry.findtext('a:' + field, '', ns).replace('Z', '+00:00'))
+            date = datetime.fromisoformat(entry.findtext('a:' + field, '', ns).replace('Z', '+00:00'))
+            check(date.tzinfo is not None, f'Feed {field} missing time zone')
+            if field == 'published':
+                published_dates.append(date)
         alternate = entry.find("a:link[@rel='alternate']", ns)
         check(alternate is not None and local_path(alternate.get('href', '')).is_file(), 'Feed article link broken')
+        content = entry.find('a:content', ns)
+        check(content is not None and content.get('type') == 'html', 'Feed must carry full HTML content')
+        if content is not None:
+            body = Document(content.text or '')
+            for img in body.find('img'):
+                image_url = img.get('src', '')
+                check(urlsplit(image_url).scheme == 'https', f'Feed image URL must be absolute HTTPS: {image_url}')
+                target = local_path(image_url)
+                check(target is not None and target.is_file(), f'Feed image missing: {image_url}')
+                check(bool(img.get('alt')), 'Feed image missing meaningful alt text')
+                check(bool(img.get('width')) and bool(img.get('height')), 'Feed image dimensions missing')
+                check(not urlsplit(image_url).path.endswith('.svg'), 'Feed img needs a raster fallback for SVG')
+        for media in entry.findall('{http://search.yahoo.com/mrss/}content'):
+            check(media.get('medium') == 'image' and media.get('type', '').startswith('image/'), 'Feed image media type missing')
+            check(local_path(media.get('url', '')).is_file(), 'Feed media URL missing')
+    check(published_dates == sorted(published_dates, reverse=True), 'Feed posts are not newest first')
     original = [e for e in entries if e.find("a:link[@href='" + origin + base + post_route + "']", ns) is not None]
     check(len(original) == 1, 'Original feed URL missing/duplicated')
     if original:
@@ -164,7 +187,7 @@ def main():
 
     sitemap = ET.parse(root / 'sitemap.xml').getroot()
     sitemap_urls = [e.text for e in sitemap.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
-    for route in ('/', '/writing/', '/topics/', '/about/', post_route):
+    for route in ('/', '/writing/', '/topics/', '/about/', '/follow/', post_route):
         check(origin + base + route in sitemap_urls, f'Sitemap missing {route}')
     for url in sitemap_urls:
         check(url.startswith(origin + base + '/'), 'Sitemap has incorrect origin')
@@ -195,6 +218,17 @@ def main():
         png = (root / 'assets/images' / (name + '.png')).read_bytes()
         check(png[:8] == b'\x89PNG\r\n\x1a\n' and struct.unpack('>II', png[16:24]) == (size, size), f'{name}: icon dimensions incorrect')
     check((root / 'assets/icons/LICENSE.txt').is_file(), 'Bundled icon license missing')
+    check((root / 'assets/licenses/jekyll-feed.txt').is_file(), 'Adapted feed template license missing')
+    follow_file = root / 'follow/index.html'
+    check(follow_file in documents, 'RSS follow guide missing')
+    if follow_file in documents:
+        follow = documents[follow_file]
+        addresses = follow.find('input', id='feed-address')
+        check(len(addresses) == 1 and addresses[0].get('value') == origin + base + '/feed.xml' and 'readonly' in addresses[0], 'Follow page feed address incorrect')
+        copy_buttons = follow.find('button', id='copy-feed', type='button')
+        check(len(copy_buttons) == 1 and 'hidden' in copy_buttons[0], 'Copy control must use progressive enhancement')
+        check(bool(follow.find('p', id='copy-feed-status', role='status')), 'Copy status announcement missing')
+        check(bool(follow.find('a', href=base + '/feed.xml')), 'Follow page raw feed link missing')
     if errors:
         raise SystemExit('\n'.join('FAIL: ' + error for error in errors))
     print(f'PASS: {len(documents)} HTML pages, {reference_count} local references, {len(entries)} Atom entries, {len(sitemap_urls)} sitemap URLs; metadata, dates, original permalink, diagrams and social assets valid.')

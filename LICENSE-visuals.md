@@ -9,6 +9,7 @@ All files in `assets/images/` in this redesign were authored for this publicatio
 | `agent-coordination-cover.svg` | Featured article cover | Conceptual split-work and verification graph |
 | `single-vs-multi.svg` | Article figure 1 | Existing article's independent-work/dependency discussion |
 | `evaluation-decision.svg` | Article figure 2 | Existing article's baseline, budgets and verification questions |
+| `single-vs-multi.png`, `evaluation-decision.png` | Feed-reader fallbacks | 2× raster exports of the matching original SVGs; no new data or claims |
 | `engineering-notes-social.svg` / `.png` | Publication social card | Original publication typography and graph |
 | `agent-coordination-social.svg` / `.png` | Article social card | Original article typography and graph |
 

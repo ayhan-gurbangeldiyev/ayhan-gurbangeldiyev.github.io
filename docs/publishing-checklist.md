@@ -30,6 +30,7 @@
 - [ ] `python3 scripts/check_site.py _site` succeeds (links, images, feed, sitemap, metadata).
 - [ ] Desktop/mobile and light/dark reviewed, keyboard focus and skip link checked.
 - [ ] RSS entry has correct URL, publication date, author and meaningful content.
+- [ ] Feed ID and existing entry IDs stay stable. Article images use absolute HTTPS URLs with raster fallbacks where needed; image media has the right MIME type. Check `/follow/` and the copy/manual-copy path when modifying RSS UI.
 - [ ] Any moved URL has a tested redirect plan and a recorded owner decision.
 - [ ] Pull request reviewed before merging; a merge to `main` triggers existing Pages publishing.
 - [ ] After production deploy, check article, feed, sitemap, social-image URLs and Search Console if authorized.
