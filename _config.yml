@@ -23,6 +23,7 @@ kramdown:
   toc_levels: "2..3"
 feed:
   posts_limit: 50
+  excerpt_only: false
 social:
   name: Ayhan Gurbangeldiyev
   links:

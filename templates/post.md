@@ -34,7 +34,8 @@ Separate measured findings from research synthesis and illustrative examples. If
 
 {% comment %}
 Optional figure:
-{% include figure.html src="/assets/images/your-diagram.svg" width=960 height=600 alt="Complete text alternative." caption="Explain what is conceptual or measured, and credit the source." %}
+{% include figure.html src="/assets/images/your-diagram.svg" fallback="/assets/images/your-diagram.png" width=960 height=600 alt="Complete text alternative." caption="Explain what is conceptual or measured, and credit the source." %}
+Export the PNG at enough resolution for reader apps; browsers still prefer the SVG. Both files must exist before publishing.
 Kramdown supports fenced code with a language and footnotes such as [^example].
 [^example]: A useful source or clarification.
 {% endcomment %}

@@ -56,9 +56,15 @@ Set `cover` for an optional home feature visual. Use `image.path`, `image.width`
 
 ## RSS / Atom
 
-The existing `jekyll-feed` plugin generates `/feed.xml`; it was already working before the redesign. It now uses the publication's Engineering Notes title, site author and accurate post metadata. The layout uses `{% feed_meta %}` once for HTML autodiscovery. Header, footer, writing archive and articles expose RSS links. Paste the feed URL into an Atom-compatible reader. No database, account, email list or external subscription service is needed.
+Follow instructions are at [`/follow/`](https://ayhan-gurbangeldiyev.github.io/follow/): copy the stable feed address, add it to an Atom-compatible reader, and read on the reader's refresh schedule. Header, footer, writing archive and articles link to this guide; it also links directly to the raw `/feed.xml`. The layout retains `{% feed_meta %}` from the existing `jekyll-feed` plugin for machine autodiscovery.
 
-`jekyll-feed` includes up to the configured 50 latest posts. Use original dates and URLs to avoid creating duplicate reader entries. The checker parses Atom XML, required entry data, authors and original date/permalink. It does not claim validation by every reader application.
+The root `feed.xml` is a small, local template adapted from the pinned jekyll-feed 0.17.0 template (MIT license in `assets/licenses/jekyll-feed.txt`). It is necessary because the stock 0.17.0 output omits the image MIME type in Media RSS metadata, and an independent reader audit flagged that compatibility gap. The plugin intentionally defers generation when this source file exists; there is one feed at the same URL, with the same feed ID, post IDs, dates, full-content policy and author names. The local template adds typed images, a feed icon and author profile URIs. No new feed plugin, custom Ruby plugin, account, database, email list or subscription service is introduced. Review this template and run the feed checks when deliberately upgrading jekyll-feed.
+
+For diagrams, use `fallback="/assets/images/your-diagram.png"` with the figure include. The website prefers the original SVG through `picture/source`; the `img` carries a PNG fallback for readers that strip SVG. Image and diagram links use absolute URLs, so they remain resolvable when syndicated outside the website. Supply a matching raster at sufficient resolution, and keep the same alt text, caption and intrinsic display dimensions. The feed preserves the complete article and AI disclosure. Current full articles use `excerpt_only: false`; changing that editorial policy also requires updating the checks that assert full content.
+
+The feed includes up to the configured 50 latest posts. Use original dates and URLs to avoid creating duplicate reader entries. The checker parses Atom XML, required entry data, authors and original date/permalink. It also checks full content, stable/unique IDs, newest-first order, image MIME metadata and absolute raster image addresses. It does not claim validation by every reader application.
+
+The follow page uses the Clipboard API after a button click. If clipboard access is blocked or unsupported, it selects the address and gives manual copy instructions. Without JavaScript, the address, instructions and raw feed link remain available and the inactive copy button stays hidden. Reader tests and the implementation plan are recorded in `docs/rss-validation.md`.
 
 ## SEO and migration
 
@@ -89,4 +95,5 @@ The local build/check commands are ready to use. An optional [validation-only Ac
 - [Publishing checklist](docs/publishing-checklist.md)
 - [Content migration plan](docs/content-migration.md)
 - [2026 search visibility audit and writing guidance](docs/search-visibility-2026.md)
+- [RSS follow plan and reader validation](docs/rss-validation.md)
 - [Validation results and limits](docs/validation.md)

@@ -36,7 +36,7 @@ Consider two illustrative tasks. Comparing several vendors could allow separate 
 
 The first example offers opportunities for independent investigation. In the second, later steps depend on earlier results and a consistent account state. Splitting responsibility introduces handoffs that need an explicit reason to exist. These examples suggest questions to test; they are not measured results.
 
-{% include figure.html src="/assets/images/single-vs-multi.svg" width=960 height=600 alt="Single-agent flow: task to agent and tools to verified outcome. Multi-agent flow: task to coordinator, independent agent A and agent B, synthesis, and verified outcome. Shared context, handoffs, and conflict resolution add coordination work." caption="Figure 1. Two illustrative architectures. Parallel work is useful only when the task allows it; delegation also adds shared context, handoffs, and synthesis. This is a conceptual comparison, not a measured performance result." %}
+{% include figure.html src="/assets/images/single-vs-multi.svg" fallback="/assets/images/single-vs-multi.png" width=960 height=600 alt="Single-agent flow: task to agent and tools to verified outcome. Multi-agent flow: task to coordinator, independent agent A and agent B, synthesis, and verified outcome. Shared context, handoffs, and conflict resolution add coordination work." caption="Figure 1. Two illustrative architectures. Parallel work is useful only when the task allows it; delegation also adds shared context, handoffs, and synthesis. This is a conceptual comparison, not a measured performance result." %}
 
 Before choosing an architecture, I would ask:
 
@@ -53,7 +53,7 @@ Evaluation should inspect the resulting state: a claimed account update must cor
 
 The decision is whether coordination improves the outcome enough for the application’s constraints. The evidence supports testing that proposition for a specific task before treating agent count as a measure of system capability.
 
-{% include figure.html src="/assets/images/evaluation-decision.svg" width=960 height=680 alt="Decision process: define representative tasks and a single-agent baseline. If subtasks cannot run independently, retain the baseline. Otherwise compare architectures with fixed models, tools, inputs, and budgets; repeat trials and inspect outcomes, failures, latency, and actual cost. Adopt coordination only if its benefit justifies the overhead under the application's constraints." caption="Figure 2. An evaluation decision process derived from the questions in this note. Success means a verified outcome within the application’s constraints. No numerical thresholds or new experimental results are implied." %}
+{% include figure.html src="/assets/images/evaluation-decision.svg" fallback="/assets/images/evaluation-decision.png" width=960 height=680 alt="Decision process: define representative tasks and a single-agent baseline. If subtasks cannot run independently, retain the baseline. Otherwise compare architectures with fixed models, tools, inputs, and budgets; repeat trials and inspect outcomes, failures, latency, and actual cost. Adopt coordination only if its benefit justifies the overhead under the application's constraints." caption="Figure 2. An evaluation decision process derived from the questions in this note. Success means a verified outcome within the application’s constraints. No numerical thresholds or new experimental results are implied." %}
 
 ## References
 

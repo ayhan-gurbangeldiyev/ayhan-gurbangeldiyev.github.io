@@ -35,4 +35,4 @@ My [portfolio](https://ayhangurbangeldiyev.com/) has my experience, education, a
 
 ## Stay in touch
 
-Read new notes in your own feed reader through [RSS / Atom]({{ '/feed.xml' | relative_url }}). You can also find me on [GitHub]({{ site.github_url }}) and [LinkedIn]({{ site.linkedin_url }}), or [send an email](mailto:{{ site.email }}).
+Read new notes in your own feed reader: [follow via RSS]({{ '/follow/' | relative_url }}). You can also find me on [GitHub]({{ site.github_url }}) and [LinkedIn]({{ site.linkedin_url }}), or [send an email](mailto:{{ site.email }}).
