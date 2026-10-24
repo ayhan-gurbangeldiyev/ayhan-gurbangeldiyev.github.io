@@ -6,6 +6,8 @@
 
 Routes: `/`, `/writing/`, `/topics/`, `/about/`, existing article URL, `/feed.xml`, `/sitemap.xml`, `/404.html`. Header links to writing, topics, about, portfolio and RSS. Footer exposes only portfolio-verified professional/contact destinations. Topics use real article data with stable fragments; unpopulated topics have no public section or page.
 
+25 October follow-up: the AG masthead mark is replaced with an explicit Home control. GitHub, LinkedIn, Portfolio, Email and RSS / Atom form a labeled icon row directly below the masthead and are repeated in the footer. These are local, attributed SVG icons rather than remote favicon requests. The browser/search favicon is a separate original document/graph mark with PNG and touch-icon exports.
+
 Home order: compact masthead → short thesis and conceptual feedback-loop figure → front-matter-selected feature → latest notes → populated topics → short author introduction. One real post may appear in both the feature and chronological archive; no invented cards or unpublished backlog entries are displayed.
 
 ## Visual tokens

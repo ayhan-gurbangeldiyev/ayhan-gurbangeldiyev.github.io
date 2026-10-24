@@ -7,8 +7,10 @@
     <meta name="theme-color" content="#f8f6f2" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#171419" media="(prefers-color-scheme: dark)">
     {% seo %}
+    {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
     {% feed_meta %}
-    <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png" sizes="96x96">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" sizes="180x180">
     <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>

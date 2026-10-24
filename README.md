@@ -70,6 +70,8 @@ For Search Console, an authorized owner must verify the `https://ayhan-gurbangel
 
 Existing `.com` articles remain there. Future originals belong here. Do not copy full articles across domains without deciding the original and redirect/canonical strategy. The [migration inventory and plan](docs/content-migration.md) lists four English articles and four Turkish routes, and explains HTTP redirects, cross-domain canonical fallback and translation handling. This repository cannot update `.com` headers or redirects.
 
+The [2026 SEO / AEO / GEO audit](docs/search-visibility-2026.md) explains scope, concrete gaps, writing standards, independent search/training crawler permissions, and current Google/Bing reporting. Article author profiles are supplied through `_data/authors.yml`; About uses `AboutPage`. A 96px PNG favicon and 180px touch icon support search/browser surfaces. Header and footer icons are locally embedded Bootstrap SVGs with the included MIT license. No AI-specific hidden text, forced FAQs or `llms.txt` ranking claims are introduced.
+
 ## Deployment and review
 
 Verified Pages setting: **Deploy from a branch → `main` → `/`**. Merging an approved PR to `main` invokes the existing GitHub Pages Jekyll build. This change does not switch Pages to an Actions deployment, set a custom domain, or deploy the feature branch. Do not add `.nojekyll`.
@@ -86,4 +88,5 @@ The local build/check commands are ready to use. An optional [validation-only Ac
 - [Editorial strategy and prioritized backlog](docs/editorial-strategy.md)
 - [Publishing checklist](docs/publishing-checklist.md)
 - [Content migration plan](docs/content-migration.md)
+- [2026 search visibility audit and writing guidance](docs/search-visibility-2026.md)
 - [Validation results and limits](docs/validation.md)

@@ -5,6 +5,7 @@ description: "Field notes on building reliable AI systems. Architecture, evaluat
 url: "https://ayhan-gurbangeldiyev.github.io"
 baseurl: ""
 lang: en
+locale: en_US
 timezone: Europe/Istanbul
 permalink: /writing/:title/
 show_excerpts: true

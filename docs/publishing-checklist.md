@@ -14,6 +14,7 @@
 
 - [ ] Filename date and original publication date agree; stable explicit permalink chosen.
 - [ ] Title and summary are unique, useful and free of keyword padding.
+- [ ] The introduction answers a real reader question with appropriate conditions; the original contribution and evidence type are clear. No fixed word count, forced FAQ or AI-specific rewriting is required.
 - [ ] One or more real topic IDs from `_data/topics.yml`; article type is correct.
 - [ ] Only deliberate featured choices; do not add artificial related content.
 - [ ] `last_modified_at` is absent unless there was a meaningful content update.
@@ -32,3 +33,4 @@
 - [ ] Any moved URL has a tested redirect plan and a recorded owner decision.
 - [ ] Pull request reviewed before merging; a merge to `main` triggers existing Pages publishing.
 - [ ] After production deploy, check article, feed, sitemap, social-image URLs and Search Console if authorized.
+- [ ] Review actual indexing/canonicals and the account's generative AI inclusion setting; consult Search Console Generative AI and Bing AI Performance when sufficient data exists. Follow `search-visibility-2026.md`; do not claim indexing or citations from deployment alone.

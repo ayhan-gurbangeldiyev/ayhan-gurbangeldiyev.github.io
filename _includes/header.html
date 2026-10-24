@@ -1,16 +1,15 @@
 <header class="site-header shell">
-  <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="Ayhan Gurbangeldiyev — Engineering Notes home">
-    <span class="identity-mark" aria-hidden="true">a<span>g</span></span>
-    <span><span class="wordmark-name">Ayhan Gurbangeldiyev</span><span class="wordmark-publication">Engineering Notes</span></span>
-  </a>
+  <div class="masthead">
+    <a class="home-link" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{% include icon.html name='house' %}<span>Home</span></a>
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="Ayhan Gurbangeldiyev — Engineering Notes"><span><span class="wordmark-name">Ayhan Gurbangeldiyev</span><span class="wordmark-publication">Engineering Notes</span></span></a>
+  </div>
   <nav class="site-nav" aria-label="Main navigation">
-    <a href="{{ '/writing/' | relative_url }}"{% if page.url contains '/writing/' %} aria-current="page"{% endif %}>Writing</a>
+    <a href="{{ '/writing/' | relative_url }}"{% if page.url == '/writing/' %} aria-current="page"{% endif %}>Writing</a>
     <a href="{{ '/topics/' | relative_url }}"{% if page.url == '/topics/' %} aria-current="page"{% endif %}>Topics</a>
     <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
-    <a href="{{ site.portfolio_url }}">Portfolio <span aria-hidden="true">↗</span></a>
-    <a href="{{ '/feed.xml' | relative_url }}" class="nav-rss">RSS</a>
   </nav>
   <label class="theme-control" hidden><span class="sr-only">Color theme</span>
     <select id="theme-select" aria-label="Color theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
   </label>
+  <nav class="header-links" aria-label="Author profiles, contact and feed">{% include social-links.html %}</nav>
 </header>

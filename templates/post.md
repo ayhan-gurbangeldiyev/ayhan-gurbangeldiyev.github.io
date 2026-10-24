@@ -20,7 +20,9 @@ toc: true
 #   alt: "Describe the image, not just its filename."
 ---
 
-Introduce the problem, scope, and evidence available. This template is excluded from the published site. Replace every placeholder before copying to `_posts/YYYY-MM-DD-slug.md`.
+Introduce the problem, scope, and evidence available. Give the reader a direct, qualified answer to the title's question when the evidence permits one. This template is excluded from the published site. Replace every placeholder before copying to `_posts/YYYY-MM-DD-slug.md`.
+
+Before drafting, write down: the question this note answers, the intended reader, the original contribution, and what evidence would change the conclusion. Choose headings for that argument; no fixed word count or FAQ section is required.
 
 ## The problem and constraints
 
@@ -39,7 +41,7 @@ Kramdown supports fenced code with a language and footnotes such as [^example].
 
 ## Trade-offs and limitations
 
-State failure modes, open questions, and conditions under which the decision changes.
+State failure modes, open questions, and conditions under which the decision changes. Make comparative claims specific to a task and baseline. A cost comparison needs cost per verified completed task, with retries and coordination included; a proposal must not read like a completed experiment.
 
 ## References
 

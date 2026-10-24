@@ -1,5 +1,7 @@
 # Validation record — 24 October 2026
 
+This first section records the initial pre-release audit. The 25 October follow-up below supersedes the earlier release-boundary statement where applicable.
+
 These are observed results, not promised Lighthouse or field-performance scores. Production deployment remains an owner review decision.
 
 ## Build and generated artifacts
@@ -58,3 +60,17 @@ The three original research-reference URLs were fetched successfully. LinkedIn a
 ## CI and release boundary
 
 The available GitHub credential has `repo`, `read:org`, `gist`; it lacks `workflow`. A validation-only workflow example is supplied in `docs/ci-workflow.example.yml`, without increasing account permissions. **No active CI workflow or remote CI run is claimed.** Local build and validation are complete. The existing `main` → `/` branch-based Pages deployment is unchanged. This feature branch is for PR review; the site has not been merged or published.
+
+## Follow-up audit — 25 October 2026
+
+The owner requested 2026 SEO/AEO/GEO research, Home and icon-link changes, and authorized deployment after the final audit. Research and account-only follow-up steps are in `search-visibility-2026.md`.
+
+- Production safe build and standard-library checker: **pass, 6 HTML pages, 141 local references, 1 Atom entry, 5 sitemap URLs**. The `/preview` baseurl build also passes.
+- Extended checks cover the Home control, five labeled header icon links per page, PNG/touch favicon dimensions, included icon license, correct author profile URL in BlogPosting, AboutPage type, Open Graph locale, 404 noindex, and robots access for Googlebot/bingbot/OAI-SearchBot.
+- All six pages were rechecked at **320, 768, 1440 CSS px**, with direct CDP device metrics for the test tab: **18 combinations, no horizontal overflow**. A native screenshot can resize the app's visible browser surface, so final responsive screenshots were captured directly through the test tab's CDP session instead.
+- axe-core 4.14.0, same WCAG/best-practice tags: **12 fresh runs, zero automated violations**, six pages in both themes at verified 1440px. The same three decorative arrows retain the previously reviewed color-contrast notes.
+- New UI marks are static, local Bootstrap Icons paths with visible labels and decorative `aria-hidden` SVGs. No external icon/font service or runtime dependency was introduced. The separate publication favicon has an original document/graph design, not the removed AG masthead.
+- Article content, original publication timestamp and existing permalink remain unchanged in this follow-up. The author lookup enriches SEO metadata without replacing the existing author string or duplicating JSON-LD.
+- Search Console property verification, generative AI inclusion setting, Bing account reports and actual indexing remain account-only checks not performed here. No AI visibility, ranking, field CWV or Lighthouse result is inferred from the successful build.
+
+This audit precedes the authorized merge/deployment. The final task delivery records the actual Pages build status and live URL checks after deployment; it does not treat a successful merge as sufficient evidence that the live site is updated.

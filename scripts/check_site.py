@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import struct
 from urllib.parse import unquote, urljoin, urlsplit
+from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
 
 
@@ -81,6 +82,16 @@ def main():
         check(len(doc.find('main')) == 1, f'{rel}: missing main landmark')
         check(bool(doc.find('a', href='#main')), f'{rel}: missing skip link')
         check(bool(doc.find('meta', name='viewport')), f'{rel}: missing viewport')
+        check(bool(doc.find('meta', property='og:locale', content='en_US')), f'{rel}: missing Open Graph locale')
+        check(bool(doc.find('a', **{'class': 'home-link', 'href': base + '/'})), f'{rel}: missing Home control')
+        check(not doc.find('span', **{'class': 'identity-mark'}), f'{rel}: old AG masthead still present')
+        header_links = re.search(r'<nav class="header-links"[^>]*>(.*?)</nav>', file.read_text(), re.S)
+        check(header_links is not None, f'{rel}: missing author/contact links')
+        if header_links:
+            links_doc = Document(header_links.group(1))
+            check(len(links_doc.find('a')) == 5, f'{rel}: incorrect author/contact links')
+            check(len(links_doc.find('svg', **{'aria-hidden': 'true'})) == 5, f'{rel}: missing decorative link icons')
+        check(bool(doc.find('link', rel='icon', type='image/png', sizes='96x96')), f'{rel}: missing PNG favicon')
         descriptions = doc.find('meta', name='description')
         check(len(descriptions) == 1 and bool(descriptions[0].get('content')), f'{rel}: invalid description')
         canonical = doc.find('link', rel='canonical')
@@ -129,6 +140,7 @@ def main():
             data = json.loads(block)
             check(data.get('@type') in ('Article', 'BlogPosting'), 'Incorrect Article structured data type')
             check(data.get('author', {}).get('name') == 'Ayhan Gurbangeldiyev', 'Article schema author missing')
+            check(data.get('author', {}).get('url') == origin + '/about/', 'Article schema author profile missing')
             check(data.get('datePublished') == '2026-09-05T13:50:00+03:00', 'Article schema date changed')
 
     ns = {'a': 'http://www.w3.org/2005/Atom'}
@@ -160,6 +172,16 @@ def main():
         check(not any(s in url for s in ('/docs/', '/templates/', '/scripts/', '/404.html')), f'Private source/404 in sitemap: {url}')
     check('Sitemap: ' + origin + base + '/sitemap.xml' in (root / 'robots.txt').read_text(), 'robots sitemap mismatch')
     check((root / '404.html').is_file(), 'Custom 404 missing')
+    if root / '404.html' in documents:
+        check(bool(documents[root / '404.html'].find('meta', name='robots', content='noindex,follow')), '404 must have noindex')
+    about_file = root / 'about/index.html'
+    if about_file in documents:
+        about_schema = re.findall(r'<script type="application/ld\+json">(.*?)</script>', about_file.read_text(), re.S)
+        check(len(about_schema) == 1 and json.loads(about_schema[0]).get('@type') == 'AboutPage', 'About page structured data type incorrect')
+    robots = RobotFileParser()
+    robots.parse((root / 'robots.txt').read_text().splitlines())
+    for bot in ('Googlebot', 'bingbot', 'OAI-SearchBot'):
+        check(robots.can_fetch(bot, origin + base + post_route), f'{bot} blocked from article')
     for directory in ('docs', 'templates', 'scripts', 'vendor'):
         check(not (root / directory).exists(), f'Source-only directory published: {directory}')
     for svg in root.rglob('*.svg'):
@@ -169,6 +191,10 @@ def main():
     for name in ('engineering-notes-social', 'agent-coordination-social'):
         png = (root / 'assets/images' / (name + '.png')).read_bytes()
         check(png[:8] == b'\x89PNG\r\n\x1a\n' and struct.unpack('>II', png[16:24]) == (1200, 630), f'{name}: social image dimensions/format incorrect')
+    for name, size in (('favicon', 96), ('apple-touch-icon', 180)):
+        png = (root / 'assets/images' / (name + '.png')).read_bytes()
+        check(png[:8] == b'\x89PNG\r\n\x1a\n' and struct.unpack('>II', png[16:24]) == (size, size), f'{name}: icon dimensions incorrect')
+    check((root / 'assets/icons/LICENSE.txt').is_file(), 'Bundled icon license missing')
     if errors:
         raise SystemExit('\n'.join('FAIL: ' + error for error in errors))
     print(f'PASS: {len(documents)} HTML pages, {reference_count} local references, {len(entries)} Atom entries, {len(sitemap_urls)} sitemap URLs; metadata, dates, original permalink, diagrams and social assets valid.')

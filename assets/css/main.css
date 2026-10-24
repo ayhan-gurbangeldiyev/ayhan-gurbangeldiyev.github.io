@@ -47,16 +47,20 @@ h2, h3 { letter-spacing: -.025em; }
 .eyebrow { font: 500 .69rem/1.5 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .accent { color: var(--blue); }
 .muted { color: var(--muted); }
-.site-header { display: flex; align-items: center; gap: 28px; min-height: 112px; border-bottom: 1px solid var(--line); }
-.wordmark { display: flex; gap: 13px; align-items: center; color: var(--ink); text-decoration: none; flex-shrink: 0; }
-.identity-mark { display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border: 1px solid var(--line); font-size: 22px; font-weight: 600; letter-spacing: -.16em; padding-right: 3px; border-radius: 50%; }
-.identity-mark span { color: var(--blue); }
+.site-header { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px; padding-block: 25px 14px; border-bottom: 1px solid var(--line); }
+.masthead { display: flex; gap: 18px; align-items: center; min-width: 0; }
+.wordmark { display: flex; align-items: center; color: var(--ink); text-decoration: none; min-width: 0; }
+.home-link { display: inline-flex; align-items: center; justify-content: center; gap: 7px; flex-shrink: 0; min-height: 40px; padding: 8px 11px; border: 1px solid var(--muted); border-radius: 3px; color: var(--ink); font-size: .77rem; text-decoration: none; }
+.home-link:hover { border-color: var(--blue); color: var(--blue); background: var(--paper); }
+.icon { display: inline-block; width: 1rem; height: 1rem; flex-shrink: 0; fill: currentColor; vertical-align: -.125em; }
+.header-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; flex-basis: 100%; border-top: 1px solid var(--line); padding-top: 10px; }
+.header-links a, .footer-links a { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; color: var(--muted); font-size: .73rem; text-decoration: none; }
+.header-links a:hover, .footer-links a:hover { color: var(--blue); text-decoration: underline; }
 .wordmark-name { display: block; font-size: .88rem; font-weight: 600; letter-spacing: -.02em; }
 .wordmark-publication { display: block; color: var(--muted); font-size: .75rem; }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 25px; font-size: .79rem; }
 .site-nav a { color: var(--muted); text-decoration: none; padding-block: .65rem; }
 .site-nav a:hover, .site-nav a[aria-current] { color: var(--ink); text-decoration: underline; }
-.site-nav .nav-rss { color: var(--blue); }
 .theme-control { border-left: 1px solid var(--line); padding-left: 18px; }
 .theme-control select { border: 0; background: transparent; color: var(--muted); font-size: .74rem; padding: .5rem 0; max-width: 80px; }
 .hero { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: 60px; padding-block: 84px 90px; }
@@ -196,9 +200,11 @@ h2:hover .heading-anchor, h3:hover .heading-anchor, .heading-anchor:focus-visibl
   .article-grid { gap: 40px; grid-template-columns: minmax(0, 1fr) 155px; }
 }
 @media (max-width: 780px) {
-  .site-header { flex-wrap: wrap; padding-block: 20px 12px; gap: 18px; }
+  .site-header { padding-block: 20px 12px; gap: 16px 18px; }
+  .masthead { flex: 1; }
   .site-nav { order: 3; width: 100%; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 7px; margin-left: 0; }
   .theme-control { margin-left: auto; border-left: 0; }
+  .header-links { order: 4; gap: 6px 22px; }
   .hero { grid-template-columns: 1fr 0.8fr; gap: 26px; }
   .hero .eyebrow { font-size: .6rem; }
   .hero h1 { font-size: 2.8rem; }
@@ -219,6 +225,11 @@ h2:hover .heading-anchor, h3:hover .heading-anchor, .heading-anchor:focus-visibl
 }
 @media (max-width: 600px) {
   .shell { width: calc(100% - 40px); }
+  .masthead { gap: 10px; }
+  .home-link { padding: 7px 8px; font-size: .72rem; gap: 5px; }
+  .home-link .icon { width: .9rem; height: .9rem; }
+  .header-links { gap: 4px 18px; }
+  .header-links a { font-size: .7rem; }
   .wordmark-name { font-size: .83rem; }
   .wordmark-publication { font-size: .71rem; }
   .site-nav { gap: 13px; font-size: .75rem; }
