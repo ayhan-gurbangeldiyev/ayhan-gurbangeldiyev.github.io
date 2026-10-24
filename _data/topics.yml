@@ -1,0 +1,18 @@
+agentic-systems:
+  name: Agentic Systems
+  description: "Architecture, orchestration, and the cost of coordination."
+ai-evaluation:
+  name: AI Evaluation
+  description: "Baselines, outcomes, and evidence that survives scrutiny."
+retrieval-rag:
+  name: Retrieval & RAG
+  description: "Retrieval quality, grounding, and useful context."
+developer-tooling:
+  name: Developer Tooling
+  description: "Tools and workflows that make engineering easier to inspect."
+security-reliability:
+  name: AI Security & Reliability
+  description: "Permissions, trust boundaries, and failure analysis."
+production-engineering:
+  name: Production Engineering
+  description: "Tracing, latency, budgets, and operating reliable software."

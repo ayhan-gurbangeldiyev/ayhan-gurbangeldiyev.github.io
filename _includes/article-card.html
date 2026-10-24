@@ -1,0 +1,5 @@
+<article class="note-row" data-note data-search="{{ include.post.title | append: ' ' | append: include.post.excerpt | strip_html | downcase | escape }} {% for topic in include.post.topics %}{{ site.data.topics[topic].name | downcase | escape }} {% endfor %}">
+  <div class="note-meta"><span class="eyebrow">{{ include.post.article_type | default: 'Engineering note' | escape }}</span>{% include reading-meta.html post=include.post %}</div>
+  {% assign heading = include.heading | default: 'h3' %}
+  <div class="note-body"><{{ heading }}><a href="{{ include.post.url | relative_url }}">{{ include.post.title | escape }} <span aria-hidden="true">↗</span></a></{{ heading }}><p>{{ include.post.excerpt | strip_html | escape }}</p>{% include topic-badges.html post=include.post %}</div>
+</article>

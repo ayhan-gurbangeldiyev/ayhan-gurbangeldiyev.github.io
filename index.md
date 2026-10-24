@@ -1,8 +1,5 @@
 ---
 layout: home
-title: Technical Notes
+title: Engineering Notes
+description: "Field notes on building reliable AI systems. Writing on agent architectures, evaluation, and the engineering trade-offs beyond the demo."
 ---
-
-Notes on AI agents, machine learning, and the engineering decisions behind useful systems.
-
-[Portfolio and contact](https://ayhangurbangeldiyev.com/) · [GitHub](https://github.com/ayhan-gurbangeldiyev)
