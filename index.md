@@ -1,5 +1,5 @@
 ---
 layout: home
-title: Ayhan Gurbangeldiyev — Engineering Notes
-description: "Ayhan Gurbangeldiyev's field notes on building reliable AI systems. Writing on agent architectures, evaluation, retrieval, and the engineering trade-offs beyond the demo."
+title: Ayhan Gurbangeldiyev
+description: "Ayhan Gurbangeldiyev’s GitHub Blog. An AI engineer’s notes on agents, retrieval, evaluation, and the engineering decisions behind reliable AI systems."
 ---

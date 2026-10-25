@@ -1,10 +1,10 @@
 # Visual provenance
 
-All files in `assets/images/` in this redesign were authored for this publication as SVG geometry/text. No stock images, downloaded illustrations, AI-generated raster images, model logos or third-party diagrams were used.
+The article diagrams and social-card layouts in `assets/images/` were authored for this publication. The favicon now uses the owner-supplied GitHub mark (`github_favicon.png`, 26 October 2026), resized locally for browser and touch icons. GitHub owns the GitHub mark; its use identifies this independently authored GitHub-hosted blog and does not imply GitHub endorsement.
 
 | Asset | Purpose | Basis |
 | --- | --- | --- |
-| `favicon.svg` / `.png`, `apple-touch-icon.png` | Document and connected-nodes publication mark | Original identity geometry; 96×96 and 180×180 raster exports |
+| `favicon.svg` / `.png`, `apple-touch-icon.png`, `/favicon.ico` | Owner-selected GitHub favicon | Owner-supplied GitHub mark; PNG 96px, touch icon 180px, ICO 16/32/48/96px |
 | `system-loop.svg` | Home identity figure | Conceptual task/action/verification feedback loop |
 | `agent-coordination-cover.svg` | Featured article cover | Conceptual split-work and verification graph |
 | `single-vs-multi.svg` | Article figure 1 | Existing article's independent-work/dependency discussion |
@@ -15,7 +15,7 @@ All files in `assets/images/` in this redesign were authored for this publicatio
 
 The two PNGs are raster exports of the corresponding SVGs, 1200×630. PNG was chosen over SVG for sharing-crawler compatibility; WebP/AVIF offer little benefit to these small text/line cards. In-page vectors remain SVG. There are no measured quantities in the conceptual diagrams.
 
-Copyright © 2026 Ayhan Gurbangeldiyev. All rights reserved. No third-party attribution or paid asset license is required for these original visuals. No broader reuse license for the publication or its prose is introduced by this redesign; any future licensing decision belongs to the owner.
+Copyright © 2026 Ayhan Gurbangeldiyev. All rights reserved. This original-art statement excludes the GitHub mark; rights in that mark remain with GitHub. No broader reuse license for the publication or its prose is introduced by this redesign; any future licensing decision belongs to the owner.
 
 ## Interface icon attribution
 

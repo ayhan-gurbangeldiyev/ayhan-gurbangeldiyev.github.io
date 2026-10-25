@@ -10,6 +10,7 @@
     {% if page.noindex %}<meta name="robots" content="noindex,follow">{% endif %}
     {% feed_meta %}
     {% assign asset_version = site.time | date: '%s' %}
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="16x16 32x32 48x48 96x96">
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/png" sizes="96x96">
     <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}" sizes="180x180">
     <script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ asset_version }}"></script>

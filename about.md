@@ -10,7 +10,7 @@ seo:
 
 I’m an AI engineer working on AI agents, retrieval systems, and production software. My work spans model training, APIs, deployment, evaluation, and human review.
 
-Engineering Notes is a place to think carefully about the systems around the model: the architecture, the tools, the evidence, and the failure modes. The central question is simple: **what makes an AI system worth trusting in practice?**
+GitHub Blog is a place to think carefully about the systems around the model: the architecture, the tools, the evidence, and the failure modes. The central question is simple: **what makes an AI system worth trusting in practice?**
 
 ## What you’ll find here
 
@@ -35,4 +35,4 @@ My [portfolio](https://ayhangurbangeldiyev.com/) has my experience, education, a
 
 ## Stay in touch
 
-Read new notes in your own feed reader: [follow via RSS]({{ '/follow/' | relative_url }}). You can also find me on [GitHub]({{ site.github_url }}) and [LinkedIn]({{ site.linkedin_url }}), or [send an email](mailto:{{ site.email }}).
+Read new notes in your own feed reader: [follow via RSS]({{ '/follow/' | relative_url }}). You can also find me on [GitHub]({{ site.github_url }}), [LinkedIn]({{ site.linkedin_url }}), and [YouTube]({{ site.youtube_url }}), or [send an email](mailto:{{ site.email }}).

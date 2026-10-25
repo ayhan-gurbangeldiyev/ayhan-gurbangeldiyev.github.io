@@ -1,4 +1,4 @@
-# Engineering Notes
+# GitHub Blog
 
 Independent technical writing by Ayhan Gurbangeldiyev on reliable and observable AI systems in practice.
 

@@ -11,7 +11,7 @@ sitemap: false
   <link href="{{ '/' | absolute_url | xml_escape }}" rel="alternate" type="text/html" hreflang="{{ site.lang | default: 'en' | xml_escape }}" />
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ '/feed.xml' | absolute_url | xml_escape }}</id>
-  <title type="html">{{ site.title | smartify | xml_escape }}</title>
+  <title type="html">{{ site.title | xml_escape }} | {{ site.short_title | xml_escape }}</title>
   <subtitle>{{ site.description | xml_escape }}</subtitle>
   <icon>{{ '/assets/images/favicon.png' | absolute_url | xml_escape }}</icon>
   {% assign site_author = site.data.authors[site.author] | default: site.author %}

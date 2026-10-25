@@ -83,7 +83,8 @@ def main():
         check(bool(doc.find('meta', name='viewport')), f'{rel}: missing viewport')
         check(bool(doc.find('meta', property='og:locale', content='en_US')), f'{rel}: missing Open Graph locale')
         check(bool(doc.find('a', **{'class': 'home-link', 'href': base + '/'})), f'{rel}: missing Home control')
-        check(not doc.find('span', **{'class': 'identity-mark'}), f'{rel}: old AG masthead still present')
+        masthead = re.search(r'<div class="masthead">(.*?)</div>', file.read_text(), re.S)
+        check(masthead is not None and not Document(masthead.group(1)).find('span', **{'class': 'identity-mark'}), f'{rel}: old AG masthead still present')
         header_links = re.search(r'<nav class="header-links"[^>]*>(.*?)</nav>', file.read_text(), re.S)
         check(header_links is not None, f'{rel}: missing author/contact links')
         if header_links:
@@ -107,6 +108,13 @@ def main():
                 check({'noopener', 'noreferrer'} <= set(attrs.get('rel', '').split()), f'{rel}: unsafe external target')
             check(not attrs.get('href', '').lower().startswith('javascript:'), f'{rel}: javascript link')
 
+    home_file = root / 'index.html'
+    if home_file in documents:
+        home = documents[home_file]
+        check(''.join(home.titles).strip() == 'Ayhan Gurbangeldiyev | GitHub Blog', 'Homepage title mismatch')
+        check(bool(home.find('meta', property='og:site_name', content='Ayhan Gurbangeldiyev')), 'Preferred site name missing')
+        blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', home_file.read_text(), re.S)
+        check(len(blocks) == 1 and json.loads(blocks[0]).get('name') == 'Ayhan Gurbangeldiyev', 'WebSite preferred name mismatch')
     check(bool(documents), 'No generated HTML found')
     check(len(titles) == len(set(titles)), 'Page titles are not unique')
     reference_count = 0
@@ -145,7 +153,7 @@ def main():
     ns = {'a': 'http://www.w3.org/2005/Atom'}
     feed = ET.parse(root / 'feed.xml').getroot()
     check(feed.tag == '{http://www.w3.org/2005/Atom}feed', 'Feed is not Atom')
-    check('Engineering Notes' in feed.findtext('a:title', '', ns), 'Feed title incorrect')
+    check(feed.findtext('a:title', '', ns) == 'Ayhan Gurbangeldiyev | GitHub Blog', 'Feed title incorrect')
     entries = feed.findall('a:entry', ns)
     check(bool(entries), 'Feed has no entries')
     entry_ids = [entry.findtext('a:id', '', ns) for entry in entries]

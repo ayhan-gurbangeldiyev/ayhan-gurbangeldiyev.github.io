@@ -1,7 +1,8 @@
-title: "Ayhan Gurbangeldiyev — Engineering Notes"
-short_title: Engineering Notes
+title: Ayhan Gurbangeldiyev
+tagline: GitHub Blog
+short_title: GitHub Blog
 author: Ayhan Gurbangeldiyev
-description: "Field notes on building reliable AI systems. Architecture, evaluation, tooling, and the decisions behind AI software that works beyond the demo."
+description: "Ayhan Gurbangeldiyev’s GitHub Blog on AI agents, retrieval, evaluation, and the engineering decisions behind reliable AI systems."
 url: "https://ayhan-gurbangeldiyev.github.io"
 baseurl: ""
 lang: en
@@ -17,6 +18,7 @@ email: info@ayhangurbangeldiyev.com
 portfolio_url: "https://ayhangurbangeldiyev.com/"
 linkedin_url: "https://www.linkedin.com/in/ayhan-gurbangeldiyev/"
 github_url: "https://github.com/ayhan-gurbangeldiyev"
+youtube_url: "https://www.youtube.com/@ayhangurbangeldiyev"
 markdown: kramdown
 highlighter: rouge
 kramdown:
@@ -32,6 +34,8 @@ social:
   links:
     - "https://github.com/ayhan-gurbangeldiyev"
     - "https://www.linkedin.com/in/ayhan-gurbangeldiyev/"
+    - "https://ayhangurbangeldiyev.com/"
+    - "https://www.youtube.com/@ayhangurbangeldiyev"
 defaults:
   - scope:
       path: ""
@@ -41,7 +45,7 @@ defaults:
         path: /assets/images/engineering-notes-social.png
         width: 1200
         height: 630
-        alt: "Engineering Notes by Ayhan Gurbangeldiyev. Field notes on building reliable AI systems."
+        alt: "GitHub Blog by Ayhan Gurbangeldiyev. Field notes on building reliable AI systems."
   - scope:
       path: ""
       type: posts
