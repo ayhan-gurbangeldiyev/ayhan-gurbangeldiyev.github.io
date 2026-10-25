@@ -65,6 +65,8 @@ h2, h3 { letter-spacing: -.025em; }
 .theme-control select { border: 0; background: transparent; color: var(--muted); font-size: .74rem; padding: .5rem 0; max-width: 80px; }
 .hero { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: 60px; padding-block: 84px 90px; }
 .hero-copy > .eyebrow { display: flex; align-items: center; gap: 9px; margin-bottom: 26px; }
+.hero-identity { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; font-size: 1.06rem; font-weight: 600; letter-spacing: -.02em; color: var(--ink); }
+.identity-mark { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex-shrink: 0; padding: 7px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); box-shadow: 0 1px 0 var(--line); }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 .hero h1 { font-size: clamp(2.65rem, 4.7vw, 3.8rem); line-height: 1.07; max-width: 12ch; font-weight: 500; }
 .hero h1 span { color: var(--blue); }
@@ -250,6 +252,8 @@ h2:hover .heading-anchor, h3:hover .heading-anchor, .heading-anchor:focus-visibl
   .hero { grid-template-columns: 1fr; padding-block: 44px 42px; gap: 34px; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.3rem); max-width: 14ch; }
   .hero-copy > .eyebrow { margin-bottom: 21px; }
+  .hero-identity { margin-bottom: 18px; font-size: 1rem; }
+  .identity-mark { width: 30px; height: 30px; padding: 6px; }
   .hero-description { font-size: .95rem; margin-top: 23px; }
   .hero-figure { width: min(100%, 400px); }
   .hero-figure img { max-height: 280px; object-fit: contain; background: #efede8; }
